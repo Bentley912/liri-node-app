@@ -1,22 +1,22 @@
 var Twitter = require("twitter");
 var spotify = require("spotify");
 var request = require("request");
-var key = require("./keys.js");
+var keys = require("./keys.js");
+
+var method = process.argv[2];
 
 
-
-var client = new Twitter({
-  consumer_key: key.twitterKeys.consumer_key,
-  consumer_secret: key.twitterKeys.consumer_secret,
-  access_token_key: key.twitterKeys.access_token_key,
-  access_token_secret: key.twitterKeys.access_token_secret
-});
+var client = new Twitter(keys.twitterKeys);
  
-var params = {screen_name: 'PI_Bentley'};
+var params = {screen_name: 'PI_Bentley', count:20};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-    console.log(tweets);
-  }
+  if (!error && method === 'twitter') {
+    
+    /*console.log(response.created_at);*/
+    for (var i = 0; i < tweets.length; i ++){
+        console.log(tweets[i].created_at);
+    }
+  } 
   else {
       console.log(error)
   }
