@@ -6,7 +6,7 @@
 
 # Commands
 
-node liri.js my-tweets
+node liri.js my-tweets\n
 This will show my last 20 tweets and when they were created at in your terminal/bash window.
 node liri.js spotify-this-song '<song name here>'
 This will show the following information about the song in your terminal/bash window
