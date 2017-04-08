@@ -27,7 +27,7 @@ var params = {screen_name: 'PI_Bentley', count:20};
     });
 }
 
-if (method === 'spotify-this-song' && media !== ''){
+if (method === 'spotify-this-song' && media !== undefined){
     spotify.search({type:'track', query: media} , function(err,data){
       if(err){
           console.log(err);
@@ -43,7 +43,7 @@ if (method === 'spotify-this-song' && media !== ''){
     });
 }
 
-if (method === 'spotify-this-song' && media === ''){
+if (method === 'spotify-this-song' && media === undefined){
     spotify.search({type:'track', query:"The+Sign" } , function(err,data){
     if (err){
         console.log(err)
@@ -52,7 +52,7 @@ if (method === 'spotify-this-song' && media === ''){
     });
 }
 
-if (method === 'movie-this' && process.argv[3] !== ' '){
+if (method === 'movie-this' && process.argv[3] !== undefined){
     var search ='';
 
     for (var i = 3; i < process.argv.length; i ++ ){
@@ -78,20 +78,20 @@ if (method === 'movie-this' && process.argv[3] !== ' '){
     });
 }
 
-if (method === 'movie-this' && process.argv[3] === ' '){
+if (method === 'movie-this' && process.argv[3] === undefined){
      request("http://www.omdbapi.com/?t=Mr.Nobody+&y=&plot=short&r=json", function(error, response, body){
 
         if (!error && response.statusCode === 200){
             console.log('\n------------------------\n') 
             console.log(JSON.parse(body).Title);   
-            // console.log(JSON.parse(body).Year);
-            // console.log(JSON.parse(body).Country);
-            // console.log(JSON.parse(body).Language);
-            // console.log(JSON.parse(body).Plot);
-            // console.log(JSON.parse(body).Actors);
-            // console.log(JSON.parse(body).Rating);
-            // console.log(JSON.parse(body).imdbRating);
-            console.log('\n------------------------\n') 
+            console.log(JSON.parse(body).Year);
+            console.log(JSON.parse(body).Country);
+            console.log(JSON.parse(body).Language);
+            console.log(JSON.parse(body).Plot);
+            console.log(JSON.parse(body).Actors);
+            console.log(JSON.parse(body).Rating);
+            console.log(JSON.parse(body).imdbRating);
+            console.log('\n------------------------\n'); 
         }
     });
 }
